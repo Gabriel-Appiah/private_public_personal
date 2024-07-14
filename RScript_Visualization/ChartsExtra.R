@@ -67,8 +67,7 @@ disp_data_<-disp_data%>%
 ggsave("AppiahFigure4.tiff", disp_data_,width=9.5, height=7,dpi = 300)
 
 ###################################################################################
-fs <- read.csv("FinalprocesEdited.csv")%>%
-  mutate(Pub_Y = ifelse(Pub_Y== 2021 | Pub_Y == 2022, 2020,Pub_Y))
+fs <- read.csv("FinalprocesEdited.csv")
 
 datsour <- c("Private","Field Survey", "Two or More Sources","Government")
 plot4 <- fs%>%
