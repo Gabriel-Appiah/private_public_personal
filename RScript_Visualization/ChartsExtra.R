@@ -7,7 +7,7 @@ if(length(new.packages))install.packages(new.packages)
 
 invisible(lapply((pkg),library, character.only = T))
 
-setwd("D:\\Master\\PhD Files\\Research\\__ResearchCollaboration\\Col_2\\arch_shifting_patterns\\arch_shifting patterns\\arch_shifting patterns\\CEUS")
+setwd()
 ###################################################################
 data <- read.csv("mapsmin10001.csv")%>%
   separate(url, into= c('HTPP','DOI'),sep ='https://doi.org/')

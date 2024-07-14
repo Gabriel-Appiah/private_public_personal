@@ -8,7 +8,7 @@ if(length(new.packages))install.packages(new.packages)
 invisible(lapply((pkg),library, character.only = T))
 
 
-setwd("D:\\Master\\PhD Files\\Research\\__ResearchCollaboration\\Col_2\\arch_shifting_patterns\\arch_shifting patterns\\arch_shifting patterns\\CEUS")
+setwd()
 
 ################################################################################
 pltfunction <- function(data,label){
