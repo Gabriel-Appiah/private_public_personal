@@ -7,7 +7,7 @@ if(length(new.packages))install.packages(new.packages)
 
 invisible(lapply((pkg),library, character.only = T))
 
-setwd()
+setwd("")
 ###################################################################
 data <- read.csv("mapsmin10001.csv")%>%
   separate(url, into= c('HTPP','DOI'),sep ='https://doi.org/')
@@ -46,8 +46,9 @@ disp_data_<-disp_data%>%
   ggplot()+aes(x=reorder(str_wrap(clus,3),count), y=count,fill=Data_S)+
   geom_bar(position="dodge", stat="identity",alpha = .9) + 
   theme(axis.line = element_line(colour = "gray87",
-                                 linetype = "solid"), panel.background = element_rect(fill = NA,
-                                                                                      linetype = "solid"), plot.background = element_rect(linetype = "solid")) +
+                                 linetype = "solid"), 
+        panel.background = element_rect(fill = NA,linetype = "solid"), 
+        plot.background = element_rect(linetype = "solid")) +
   labs(x = "Themes", y = "Num. of Publications",
        fill = "Data Sources")+ #title = "Figure 3: Analytical Techniques by Data Sources"
   #scale_fill_viridis(discrete = TRUE)+
@@ -75,8 +76,9 @@ plot4 <- fs%>%
   ggplot() + aes(x=reorder(Data_S,count), y=count, fill = F_Y_N)+
   geom_bar(position="dodge", stat="identity") + 
   theme(axis.line = element_line(colour = "gray87",
-                                 linetype = "solid"), panel.background = element_rect(fill = NA,
-                                                                                      linetype = "solid"), plot.background = element_rect(linetype = "solid")) +
+                                 linetype = "solid"), 
+        panel.background = element_rect(fill = NA,linetype = "solid"), 
+        plot.background = element_rect(linetype = "solid")) +
   labs(x = "Data Sources", y = "Num. of Publications",
        fill = "Funding Status")+
   #scale_fill_viridis(discrete = TRUE)+
@@ -133,10 +135,10 @@ plot1b <- fs%>%
   geom_line(linewidth = 0.5)+
   scale_shape_discrete(solid = T)+
   labs(x = "Year of Publication", y = "Num. of Publications")+ #title = "Figure 2: Data Sources by Year of Publication"
-  scale_color_discrete(labels = c("Field Survey", "Government","Private","Two or More Sources")) + theme(axis.line = element_line(colour = "gray74",
-                                                                                                                                  size = 0.9, linetype = "solid"), axis.ticks = element_line(size = 0.8),
-                                                                                                         panel.background = element_rect(fill = NA,
-                                                                                                                                         linetype = "solid"), legend.background = element_rect(fill = NA)) +
+  scale_color_discrete(labels = c("Field Survey", "Government","Private","Two or More Sources")) + 
+  theme(axis.line = element_line(colour = "gray74",size = 0.9, linetype = "solid"),
+        axis.ticks = element_line(size = 0.8),panel.background = element_rect(fill = NA,linetype = "solid"), 
+        legend.background = element_rect(fill = NA)) +
   theme(legend.key = element_rect(fill = NA))+
   theme_minimal()+
   #theme(plot.title = element_text(size = 16)) + 
@@ -165,8 +167,9 @@ pub_trend <- pub_t%>%
   labs(x = "Year of Publication", y = "Num. of Publications")+ #title = "Figure 1: Journals by Year of Publication"
   #scale_color_discrete(labels = c("AAAG","CEUS","EPB","IJGIS","TGIS","GA")) + 
   theme(axis.line = element_line(colour = "gray74", size = 0.9, linetype = "solid"), 
-        axis.ticks = element_line(size = 0.8), panel.background = element_rect(fill = NA,
-                                                                               linetype = "solid"), legend.background = element_rect(fill = NA)) +
+        axis.ticks = element_line(size = 0.8), 
+        panel.background = element_rect(fill = NA,linetype = "solid"), 
+        legend.background = element_rect(fill = NA)) +
   theme(legend.key = element_rect(fill = NA))+
   theme_minimal()+
   #theme(plot.title = element_text(size = 16),legend.text = element_text(size=30)) + 
@@ -187,8 +190,9 @@ stackedbar <- fs %>%
 figure <- ggplot(stackedbar, aes(fill=Data_S, y = count, x= reorder(J_Name,count)))+
   geom_bar(position="stack",stat = "identity")+
   theme(axis.line = element_line(colour = "gray87",
-                                 linetype = "solid"), panel.background = element_rect(fill = NA,
-                                                                                      linetype = "solid"), plot.background = element_rect(linetype = "solid")) +
+                                 linetype = "solid"), 
+        panel.background = element_rect(fill = NA,linetype = "solid"), 
+        plot.background = element_rect(linetype = "solid")) +
   labs(x = "Journals", y = "Num. of Publications",
        fill = "Data Sources")+
   #scale_fill_viridis(discrete = TRUE)+
@@ -212,8 +216,9 @@ df_ <- df|>
   ggplot()+aes(x=reorder(J_Name,co), y=co, fill=PublishedData)+
   geom_bar(position="stack",stat = "identity")+
   theme(axis.line = element_line(colour = "gray87",
-                                 linetype = "solid"), panel.background = element_rect(fill = NA,
-                                                                                      linetype = "solid"), plot.background = element_rect(linetype = "solid")) +
+                                 linetype = "solid"), 
+        panel.background = element_rect(fill = NA,linetype = "solid"), 
+        plot.background = element_rect(linetype = "solid")) +
   labs(x = "Journals", y = "Num. of Publications",
        fill = "Data used for analysis published \nalongside articles")+
   #scale_fill_viridis(discrete = TRUE)+
