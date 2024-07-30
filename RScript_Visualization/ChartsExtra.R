@@ -7,7 +7,7 @@ if(length(new.packages))install.packages(new.packages)
 
 invisible(lapply((pkg),library, character.only = T))
 
-setwd("")
+setwd("D:\\Master\\PhD Files\\Research\\__ResearchCollaboration\\Col_2\\arch_shifting_patterns\\arch_shifting patterns\\arch_shifting patterns\\CEUS")
 ###################################################################
 data <- read.csv("mapsmin10001.csv")%>%
   separate(url, into= c('HTPP','DOI'),sep ='https://doi.org/')
@@ -44,7 +44,7 @@ disp_data <- data_proces%>%
 disp_data_<-disp_data%>%
   count(clus, Data_S,name = "count")%>%
   ggplot()+aes(x=reorder(str_wrap(clus,3),count), y=count,fill=Data_S)+
-  geom_bar(position="dodge", stat="identity",alpha = .9) + 
+  geom_bar(position="dodge", stat="identity") + 
   theme(axis.line = element_line(colour = "gray87",
                                  linetype = "solid"), 
         panel.background = element_rect(fill = NA,linetype = "solid"), 
@@ -65,7 +65,11 @@ disp_data_<-disp_data%>%
   theme(legend.position = c(0.2, 0.85))#,legend.key.size = unit(0.5,'cm'),
         #legend.text = element_text(size=7))
 
-ggsave("AppiahFigure4.tiff", disp_data_,width=9.5, height=7,dpi = 300)
+
+
+ggsave("AppiahFigure4.eps", disp_data_,width=9.5, height=7,dpi = 600)
+
+
 
 ###################################################################################
 fs <- read.csv("FinalprocesEdited.csv")
@@ -75,10 +79,10 @@ plot4 <- fs%>%
   count(F_Y_N,Data_S, name = 'count')%>%
   ggplot() + aes(x=reorder(Data_S,count), y=count, fill = F_Y_N)+
   geom_bar(position="dodge", stat="identity") + 
-  theme(axis.line = element_line(colour = "gray87",
-                                 linetype = "solid"), 
-        panel.background = element_rect(fill = NA,linetype = "solid"), 
-        plot.background = element_rect(linetype = "solid")) +
+  #theme(axis.line = element_line(colour = "gray87",
+                                 #linetype = "solid"), 
+        #panel.background = element_rect(fill = NA,linetype = "solid"), 
+        #plot.background = element_rect(linetype = "solid")) +
   labs(x = "Data Sources", y = "Num. of Publications",
        fill = "Funding Status")+
   #scale_fill_viridis(discrete = TRUE)+
@@ -93,9 +97,9 @@ plot4 <- fs%>%
                                              #axis.text.y = element_text(size=20),axis.title = element_text(size=30))
   
 
-plot4
+#plot4
 
-ggsave("AppiahFigure7.tiff", plot4,width=7, height=5, dpi = 300)
+ggsave("AppiahFigure7.eps", plot4,width=7, height=5, dpi = 600)
 
 #################################################################################
 
@@ -109,10 +113,10 @@ plot4b <- fs%>%
   scale_shape_discrete(solid = T)+
   labs(x = "Year of Publication", y = "Num. of Publications")+#, title = "Figure 4: Funding Status by Year of Publication"
   #scale_color_discrete(labels = c("Funded", "No Funding"),name="Funding Stats") +
-  theme(axis.line = element_line(colour = "gray74",
-                                 size = 0.9, linetype = "solid"), axis.ticks = element_line(size = 0.8),
-        panel.background = element_rect(fill = NA,
-                                        linetype = "solid"), legend.background = element_rect(fill = NA)) +
+  #theme(axis.line = element_line(colour = "gray74",
+                                 #size = 0.9, linetype = "solid"), axis.ticks = element_line(size = 0.8),
+        #panel.background = element_rect(fill = NA,
+                                        #linetype = "solid"), legend.background = element_rect(fill = NA)) +
   theme(legend.key = element_rect(fill = NA))+
   theme_minimal()+
   #theme(plot.title = element_text(size = 16)) + 
@@ -122,9 +126,9 @@ plot4b <- fs%>%
             vjust = -.5,size = 3, show.legend = F)
 
 
-plot4b
+#plot4b
 
-ggsave("AppiahFigure6.tiff", plot4b,width=7, height=5, dpi = 300)
+ggsave("AppiahFigure6.eps", plot4b,width=7, height=5, dpi = 600)
 
 #################################################################################
 plot1b <- fs%>%
@@ -136,9 +140,9 @@ plot1b <- fs%>%
   scale_shape_discrete(solid = T)+
   labs(x = "Year of Publication", y = "Num. of Publications")+ #title = "Figure 2: Data Sources by Year of Publication"
   scale_color_discrete(labels = c("Field Survey", "Government","Private","Two or More Sources")) + 
-  theme(axis.line = element_line(colour = "gray74",size = 0.9, linetype = "solid"),
-        axis.ticks = element_line(size = 0.8),panel.background = element_rect(fill = NA,linetype = "solid"), 
-        legend.background = element_rect(fill = NA)) +
+  #theme(axis.line = element_line(colour = "gray74",size = 0.9, linetype = "solid"),
+        #axis.ticks = element_line(size = 0.8),panel.background = element_rect(fill = NA,linetype = "solid"), 
+        #legend.background = element_rect(fill = NA)) +
   theme(legend.key = element_rect(fill = NA))+
   theme_minimal()+
   #theme(plot.title = element_text(size = 16)) + 
@@ -148,9 +152,9 @@ plot1b <- fs%>%
             vjust = -.5,size = 2, show.legend = F)+
   scale_linetype_manual(values=c('solid','twodash','dotdash','longdash'))
 
-plot1b
+#plot1b
 
-ggsave("AppiahFigure2.tiff", plot1b,width=7, height=5, dpi = 300)
+ggsave("AppiahFigure2.eps", plot1b,width=7, height=5, dpi = 600)
 
 ################################################################################
 
@@ -166,10 +170,10 @@ pub_trend <- pub_t%>%
   scale_shape_discrete(solid = T)+
   labs(x = "Year of Publication", y = "Num. of Publications")+ #title = "Figure 1: Journals by Year of Publication"
   #scale_color_discrete(labels = c("AAAG","CEUS","EPB","IJGIS","TGIS","GA")) + 
-  theme(axis.line = element_line(colour = "gray74", size = 0.9, linetype = "solid"), 
-        axis.ticks = element_line(size = 0.8), 
-        panel.background = element_rect(fill = NA,linetype = "solid"), 
-        legend.background = element_rect(fill = NA)) +
+  #theme(axis.line = element_line(colour = "gray74", size = 0.9, linetype = "solid"), 
+        #axis.ticks = element_line(size = 0.8), 
+        #panel.background = element_rect(fill = NA,linetype = "solid"), 
+        #legend.background = element_rect(fill = NA)) +
   theme(legend.key = element_rect(fill = NA))+
   theme_minimal()+
   #theme(plot.title = element_text(size = 16),legend.text = element_text(size=30)) + 
@@ -178,8 +182,8 @@ pub_trend <- pub_t%>%
   scale_linetype_manual(values=c('solid','dashed','twodash','dotted','dotdash','longdash'))
 #geom_text(aes(label = count),vjust = -.5,size = 4, show.legend = F)
 
-pub_trend
-ggsave("AppiahFigure1.tiff", pub_trend,width=7, height=5, dpi = 300)
+#pub_trend
+ggsave("AppiahFigure1.eps", pub_trend,width=7, height=5, dpi = 600)
 
 ################################################################################
 stackedbar <- fs %>%
@@ -189,10 +193,10 @@ stackedbar <- fs %>%
 
 figure <- ggplot(stackedbar, aes(fill=Data_S, y = count, x= reorder(J_Name,count)))+
   geom_bar(position="stack",stat = "identity")+
-  theme(axis.line = element_line(colour = "gray87",
-                                 linetype = "solid"), 
-        panel.background = element_rect(fill = NA,linetype = "solid"), 
-        plot.background = element_rect(linetype = "solid")) +
+  #theme(axis.line = element_line(colour = "gray87",
+                                 #linetype = "solid"), 
+        #panel.background = element_rect(fill = NA,linetype = "solid"), 
+        #plot.background = element_rect(linetype = "solid")) +
   labs(x = "Journals", y = "Num. of Publications",
        fill = "Data Sources")+
   #scale_fill_viridis(discrete = TRUE)+
@@ -204,8 +208,8 @@ figure <- ggplot(stackedbar, aes(fill=Data_S, y = count, x= reorder(J_Name,count
   #theme(legend.title = element_text(size = 30),legend.text = element_text(size=30))+
   theme(legend.position = c(0.3, 0.67))#,axis.text.x = element_text(size=20),
         #axis.text.y = element_text(size=20),axis.title = element_text(size=30))
-figure
-ggsave("AppiahFigure3.tiff", figure,width=7, height=5, dpi = 300)
+#figure
+ggsave("AppiahFigure3.eps", figure,width=7, height=5, dpi = 600)
 
 #################################################################################
 df <- read.csv("Sprivatedata_.csv")
@@ -215,10 +219,10 @@ df_ <- df|>
   summarise(co = n())|>
   ggplot()+aes(x=reorder(J_Name,co), y=co, fill=PublishedData)+
   geom_bar(position="stack",stat = "identity")+
-  theme(axis.line = element_line(colour = "gray87",
-                                 linetype = "solid"), 
-        panel.background = element_rect(fill = NA,linetype = "solid"), 
-        plot.background = element_rect(linetype = "solid")) +
+  #theme(axis.line = element_line(colour = "gray87",
+                                 #linetype = "solid"), 
+        #panel.background = element_rect(fill = NA,linetype = "solid"), 
+        #plot.background = element_rect(linetype = "solid")) +
   labs(x = "Journals", y = "Num. of Publications",
        fill = "Data used for analysis published \nalongside articles")+
   #scale_fill_viridis(discrete = TRUE)+
@@ -231,5 +235,5 @@ df_ <- df|>
   theme(legend.position = c(0.3, 0.67))#,axis.text.x = element_text(size=20),
         #axis.text.y = element_text(size=20),axis.title = element_text(size=30))
 
-ggsave("AppiahFigure5.tiff", df_,width=7, height=5, dpi = 300)
+ggsave("AppiahFigure5.eps", df_,width=7, height=5, dpi = 600)
 
